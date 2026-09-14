@@ -35,5 +35,8 @@ public class EstadisticaVoleibol extends Estadistica {
 	public int getValorDestacado() {
 		return this.aces;
 	}
-
+	@Override
+	public Estadistica crearVacia() {
+		return new EstadisticaFutbol(getJugador(), 0, 0);
+	}
 }

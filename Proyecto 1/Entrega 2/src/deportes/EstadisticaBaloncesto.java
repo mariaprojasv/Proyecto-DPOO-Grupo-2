@@ -35,5 +35,10 @@ public class EstadisticaBaloncesto extends Estadistica {
 	public int getValorDestacado() {
 		return this.puntos;
 	}
+	@Override
+	public Estadistica crearVacia() {
+		return new EstadisticaFutbol(getJugador(), 0, 0);
+	}
+	
 
 }

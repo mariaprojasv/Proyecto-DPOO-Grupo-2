@@ -2,6 +2,9 @@ package usuarios;
 
 import java.time.LocalDate;
 import java.time.Period;
+import deportes.Estadistica;
+import deportes.Competencia;
+import deportes.PartidoCompetencia;
 
 public class Jugador extends Socio {
 	private LocalDate fechaNacimiento;
@@ -17,5 +20,19 @@ public class Jugador extends Socio {
 
 	public int getEdad() {
 		return Period.between(fechaNacimiento, LocalDate.now()).getYears();
+	}
+	public Estadistica getEstadisticasAcumuladas(Competencia c) {
+		Estadistica acumulada = null;
+		for (PartidoCompetencia p : c.getPartidos()) {
+			for (Estadistica est : p.getEstadisticas()) {
+				if (est.getJugador() == this) {
+					if (acumulada == null) {
+						acumulada = est.crearVacia();
+					}
+					acumulada.acumular(est);
+				}
+			}
+		}
+		return acumulada;
 	}
 }

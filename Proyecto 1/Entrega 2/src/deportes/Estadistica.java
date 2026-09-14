@@ -16,4 +16,5 @@ public abstract class Estadistica {
 	public abstract void acumular(Estadistica otra);
 
 	public abstract int getValorDestacado();
+	public abstract Estadistica crearVacia();
 }

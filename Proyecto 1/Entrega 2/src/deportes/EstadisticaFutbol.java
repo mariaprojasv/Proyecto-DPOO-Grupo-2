@@ -34,5 +34,8 @@ public class EstadisticaFutbol extends Estadistica {
 	public int getValorDestacado() {
 		return this.goles;
 	}
-
+	@Override
+	public Estadistica crearVacia() {
+		return new EstadisticaFutbol(getJugador(), 0, 0);
+	}
 }
