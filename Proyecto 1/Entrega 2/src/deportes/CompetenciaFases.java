@@ -7,7 +7,7 @@ public class CompetenciaFases extends Competencia {
 	private int faseActual;
 
 	public CompetenciaFases(String nombre, String organizador, String temporada, int nominaMinima, Deporte deporte, Categoria categoria) {
-		super(nombre, nominaMinima, temporada, organizador, deporte, categoria);
+		super(nombre, organizador, temporada, nominaMinima, deporte, categoria);
 		this.fases = new ArrayList<>();
 		this.faseActual = 0;
 	}

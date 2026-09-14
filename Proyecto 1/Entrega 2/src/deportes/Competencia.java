@@ -13,7 +13,7 @@ public abstract class Competencia {
 	private Categoria categoria;
 	private ArrayList<Nomina> nominas;
 	private ArrayList<PartidoCompetencia> partidos;
-	public Competencia(String nombre, int nominaMinima, String organizador, String temporada,  Deporte deporte,
+	public Competencia(String nombre, String organizador, String temporada, int nominaMinima, Deporte deporte, 
 			Categoria categoria) {
 		this.nombre = nombre;
 		this.organizador = organizador;

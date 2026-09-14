@@ -6,7 +6,7 @@ public class CompetenciaLiga extends Competencia {
 	private ArrayList<PosicionTabla> tabla;
 
 	public CompetenciaLiga(String nombre, String organizador, String temporada, int nominaMinima, Deporte deporte, Categoria categoria) {
-		super(nombre, nominaMinima, temporada, organizador, deporte, categoria);
+		super(nombre, organizador, temporada, nominaMinima, deporte, categoria);
 		this.tabla = new ArrayList<>();
 	}
 
