@@ -7,6 +7,8 @@ import deportes.AreaDeportiva;
 import reservas.GestionReservas;
 import Tienda.tienda;
 import usuarios.Usuario;
+import usuarios.GestionTurnos;
+import deportes.ControlSanciones;
 
 public class ClubDeportivoSeneca {
     private String nombre;
@@ -16,6 +18,8 @@ public class ClubDeportivoSeneca {
     private GestionReservas gestionReservas;
     private tienda tiendaClub;
     private Cafeteria cafeteria;
+    private GestionTurnos gestionTurnos;
+    private ControlSanciones controlSanciones;
 
     public ClubDeportivoSeneca(String nombre) {
         this.nombre = nombre;
@@ -25,6 +29,8 @@ public class ClubDeportivoSeneca {
         gestionReservas = new GestionReservas();
         tiendaClub = new tienda();
         cafeteria = new Cafeteria();
+        gestionTurnos = new GestionTurnos();
+        controlSanciones = new ControlSanciones();
     }
 
     public String getNombre() {
@@ -54,6 +60,14 @@ public class ClubDeportivoSeneca {
     public Cafeteria getCafeteria() {
 	return cafeteria;
 	}
+
+    public ControlSanciones getControlSanciones() {
+        return controlSanciones;
+    }
+
+    public GestionTurnos getGestionTurnos() {
+        return gestionTurnos;
+    }
 
     public boolean registrarUsuario(Usuario usuario) {
         if (usuario == null || usuario.getLogin() == null || usuario.getLogin().isEmpty()) {

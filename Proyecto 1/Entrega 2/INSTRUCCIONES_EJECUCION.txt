@@ -1,0 +1,33 @@
+CLUB DEPORTIVO SENECA - ENTREGA 2
+INSTRUCCIONES PARA EJECUTAR EN ECLIPSE
+
+1. Descomprimir el archivo ZIP.
+2. Abrir Eclipse y elegir File > Import > General > Existing Projects into Workspace.
+3. En Select root directory, seleccionar la carpeta Proyecto 1/Entrega 2.
+4. Pulsar Finish. Si Eclipse ya tiene un proyecto con el mismo nombre, utilizar otro workspace.
+5. En Package Explorer abrir src > pruebas > PruebaGeneral.java.
+6. Clic derecho > Run As > Java Application.
+7. Revisar la consola: se muestran las verificaciones y los archivos guardados.
+
+No es necesario escribir datos manualmente. Las pruebas crean datos ficticios y ejecutan operaciones del sistema.
+
+OTRAS PRUEBAS DISPONIBLES (ejecutar del mismo modo):
+- PruebaFinal: validaciones de marcadores, duplicados y descuentos.
+- PruebaAdministracionTurnosCafeteria: operaciones administrativas, cobertura y ventas.
+- PruebaPersistenciaTurnosCafeteria: guardado y recuperacion de turnos y ventas.
+- PruebaControlSanciones: tarjetas y suspensiones.
+- PruebaSancionesPartidos: sanciones vinculadas a partidos.
+- PruebaPersistenciaSanciones: recuperacion de sanciones en TXT.
+- PruebaReservas, PruebaAcademia, PruebaDeportes y otras pruebas funcionales.
+
+Los archivos TXT se almacenan en la carpeta data del proyecto. Las pruebas especificas generan sus propios archivos temporales al ejecutarse. Solo data/demo incluye datos de demostracion en el ZIP.
+Si ejecutas las pruebas, pueden aparecer nuevas carpetas data/prueba*; son resultados de prueba y no es necesario subirlas a GitHub.
+
+La carpeta src contiene el codigo fuente. Los archivos .project y .classpath permiten importar el proyecto en Eclipse.
+La carpeta bin no se entrega porque Eclipse genera los archivos compilados automaticamente.
+
+NOTAS
+- El proyecto utiliza archivos TXT, no JSON ni base de datos.
+- Esta version conserva las pruebas funcionales, pero sus nombres ya no dependen de numeros de revision.
+- El documento de diseno y los diagramas deben incorporarse a Entrega 2 antes de entregar el enlace final.
+- No se afirma cobertura total de todos los requisitos: deben revisarse contra el enunciado y el UML final.

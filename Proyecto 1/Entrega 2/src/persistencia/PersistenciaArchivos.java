@@ -11,6 +11,7 @@ import usuarios.Socio;
 import usuarios.Jugador;
 import usuarios.Administrador;
 import deportes.Deporte;
+import deportes.ControlSanciones;
 import deportes.Categoria;
 import deportes.Equipo;
 import deportes.InscripcionEquipo;
@@ -29,6 +30,10 @@ import academia.InscripcionIndividual;
 import academia.Entrenamiento;
 import academia.AsistenciaEntrenamiento;
 import usuarios.Entrenador;
+import usuarios.Fisioterapeuta;
+import usuarios.Empleado;
+import usuarios.TurnoEmpleado;
+import cafeteria.VentaCafeteria;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -47,6 +52,34 @@ public class PersistenciaArchivos {
         carpeta = new File(ruta);
     }
 
+    private void guardarSanciones(ClubDeportivoSeneca club) throws IOException {
+        PrintWriter archivo = new PrintWriter(new File(carpeta, "sanciones.txt"), "UTF-8");
+        ControlSanciones control = club.getControlSanciones();
+        for (Jugador jugador : control.getJugadoresConAmarillas()) {
+            archivo.println(limpiar(jugador.getLogin()) + "|" + control.getAmarillas(jugador) + "|" + control.estaSuspendido(jugador));
+        }
+        for (Jugador jugador : control.getSuspendidos()) {
+            if (!control.getJugadoresConAmarillas().contains(jugador)) {
+                archivo.println(limpiar(jugador.getLogin()) + "|0|true");
+            }
+        }
+        archivo.close();
+    }
+
+    private void cargarSanciones(ClubDeportivoSeneca club) throws IOException {
+        File archivo = new File(carpeta, "sanciones.txt");
+        if (!archivo.exists()) {
+            return;
+        }
+        for (String linea : Files.readAllLines(archivo.toPath())) {
+            String[] datos = linea.split("\\|", -1);
+            if (datos.length == 3 && club.buscarUsuario(datos[0]) instanceof Jugador) {
+                Jugador jugador = (Jugador) club.buscarUsuario(datos[0]);
+                club.getControlSanciones().recuperarEstado(jugador, Integer.parseInt(datos[1]), Boolean.parseBoolean(datos[2]));
+            }
+        }
+    }
+
     public void guardar(ClubDeportivoSeneca club) throws IOException {
         if (!carpeta.exists() && !carpeta.mkdirs()) {
             throw new IOException("No se pudo crear la carpeta de datos");
@@ -62,6 +95,8 @@ public class PersistenciaArchivos {
             } else if (u instanceof Entrenador) {
                 Entrenador entrenador = (Entrenador) u;
                 archivo.println("E|" + limpiar(u.getLogin()) + "|" + limpiar(u.getPassword()) + "|" + limpiar(u.getNombre()) + "|" + limpiar(entrenador.getEspecialidad()));
+            } else if (u instanceof Fisioterapeuta) {
+                archivo.println("F|" + limpiar(u.getLogin()) + "|" + limpiar(u.getPassword()) + "|" + limpiar(u.getNombre()));
             } else if (u instanceof Administrador) {
                 archivo.println("A|" + limpiar(u.getLogin()) + "|" + limpiar(u.getPassword()) + "|" + limpiar(u.getNombre()));
             }
@@ -89,6 +124,9 @@ public class PersistenciaArchivos {
         guardarRelaciones(club);
         guardarCompetencias(club);
         guardarVentas(club);
+        guardarTurnos(club);
+        guardarVentasCafeteria(club);
+        guardarSanciones(club);
     }
 
     public void cargar(ClubDeportivoSeneca club) throws IOException {
@@ -103,6 +141,8 @@ public class PersistenciaArchivos {
                     club.registrarUsuario(new Socio(datos[1], datos[2], datos[3], Integer.parseInt(datos[4])));
                 } else if (datos[0].equals("E") && datos.length == 5) {
                     club.registrarUsuario(new Entrenador(datos[1], datos[2], datos[3], datos[4]));
+                } else if (datos[0].equals("F") && datos.length == 4) {
+                    club.registrarUsuario(new Fisioterapeuta(datos[1], datos[2], datos[3]));
                 } else if (datos[0].equals("A") && datos.length == 4) {
                     club.registrarUsuario(new Administrador(datos[1], datos[2], datos[3]));
                 }
@@ -140,6 +180,9 @@ public class PersistenciaArchivos {
         cargarRelaciones(club);
         cargarCompetencias(club);
         cargarVentas(club);
+        cargarTurnos(club);
+        cargarVentasCafeteria(club);
+        cargarSanciones(club);
     }
 
 
@@ -438,6 +481,71 @@ public class PersistenciaArchivos {
                 venta.calcularTotal();
             }
             indice++;
+        }
+    }
+
+    private void guardarTurnos(ClubDeportivoSeneca club) throws IOException {
+        PrintWriter archivo = new PrintWriter(new File(carpeta, "turnos.txt"), "UTF-8");
+        for (TurnoEmpleado turno : club.getGestionTurnos().getTurnos()) {
+            Empleado empleado = turno.getEmpleado();
+            String tipo = "";
+            String especialidad = "";
+            if (empleado instanceof Entrenador) {
+                tipo = "E";
+                especialidad = ((Entrenador) empleado).getEspecialidad();
+            } else if (empleado instanceof Fisioterapeuta) {
+                tipo = "F";
+            }
+            if (!tipo.isEmpty()) {
+                archivo.println(tipo + "|" + limpiar(empleado.getLogin()) + "|" + limpiar(empleado.getPassword()) + "|" + limpiar(empleado.getNombre()) + "|" + limpiar(especialidad) + "|" + turno.getInicio() + "|" + turno.getFin());
+            }
+        }
+        archivo.close();
+    }
+
+    private void cargarTurnos(ClubDeportivoSeneca club) throws IOException {
+        for (String linea : leer("turnos.txt")) {
+            String[] d = linea.split("\\|", -1);
+            if (d.length == 7) {
+                Usuario usuario = club.buscarUsuario(d[1]);
+                if (usuario == null && d[0].equals("E")) {
+                    usuario = new Entrenador(d[1], d[2], d[3], d[4]);
+                    club.registrarUsuario(usuario);
+                } else if (usuario == null && d[0].equals("F")) {
+                    usuario = new Fisioterapeuta(d[1], d[2], d[3]);
+                    club.registrarUsuario(usuario);
+                }
+                if (usuario instanceof Empleado) {
+                    club.getGestionTurnos().agregarTurno((Empleado) usuario, LocalTime.parse(d[5]), LocalTime.parse(d[6]));
+                }
+            }
+        }
+    }
+
+    private void guardarVentasCafeteria(ClubDeportivoSeneca club) throws IOException {
+        PrintWriter archivo = new PrintWriter(new File(carpeta, "ventas_cafeteria.txt"), "UTF-8");
+        for (VentaCafeteria venta : club.getCafeteria().getVentas()) {
+            int indice = club.getCafeteria().getProductos().indexOf(venta.getProducto());
+            if (venta.getComprador() != null && indice >= 0) {
+                archivo.println(limpiar(venta.getComprador().getLogin()) + "|" + indice + "|" + venta.getCantidad() + "|" + venta.getPropina() + "|" + venta.getFecha());
+            }
+        }
+        archivo.close();
+    }
+
+    private void cargarVentasCafeteria(ClubDeportivoSeneca club) throws IOException {
+        for (String linea : leer("ventas_cafeteria.txt")) {
+            String[] d = linea.split("\\|", -1);
+            if (d.length == 5) {
+                Usuario comprador = club.buscarUsuario(d[0]);
+                int indice = Integer.parseInt(d[1]);
+                if (comprador != null && indice >= 0 && indice < club.getCafeteria().getProductos().size()) {
+                    Producto producto = club.getCafeteria().getProductos().get(indice);
+                    VentaCafeteria venta = new VentaCafeteria(comprador, producto, Integer.parseInt(d[2]), Double.parseDouble(d[3]));
+                    venta.establecerFecha(LocalDate.parse(d[4]));
+                    club.getCafeteria().getVentas().add(venta);
+                }
+            }
         }
     }
 

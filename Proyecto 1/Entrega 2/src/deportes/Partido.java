@@ -2,6 +2,7 @@ package deportes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import usuarios.Jugador;
 
 public abstract class Partido {
 	private LocalDate fecha;
@@ -11,6 +12,7 @@ public abstract class Partido {
 	private int marcadorVisitante;
 	private ArrayList<Estadistica> estadisticas;
 	private ArrayList<Tarjeta> tarjetas;
+	private ControlSanciones controlSanciones;
 
 	public Partido(LocalDate fecha, Deporte deporte, Equipo equipoClub) {
 		this.fecha = fecha;
@@ -20,6 +22,7 @@ public abstract class Partido {
 		this.marcadorVisitante = 0;
 		this.estadisticas = new ArrayList<>();
 		this.tarjetas = new ArrayList<>();
+		this.controlSanciones = null;
 	}
 
 	public LocalDate getFecha() {
@@ -62,9 +65,33 @@ public abstract class Partido {
 	public void registrarEstadistica(Estadistica e) {
 	    estadisticas.add(e);
 	}
-	public void registrarTarjeta(Tarjeta t) {
-	    tarjetas.add(t);
-	}
+	public void establecerControlSanciones(ControlSanciones control) {
+        controlSanciones = control;
+    }
+
+    public boolean puedeAlinearse(Jugador jugador) {
+        if (jugador == null || equipoClub == null || !equipoClub.getJugadores().contains(jugador)) {
+            return false;
+        }
+        if (controlSanciones != null && !controlSanciones.puedeAlinearse(jugador)) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean registrarTarjeta(Tarjeta t) {
+        if (t == null || t.getJugador() == null || t.getTipo() == null) {
+            return false;
+        }
+        if (!t.getTipo().equalsIgnoreCase("AMARILLA") && !t.getTipo().equalsIgnoreCase("ROJA")) {
+            return false;
+        }
+        if (controlSanciones != null && !controlSanciones.registrarTarjeta(t)) {
+            return false;
+        }
+        tarjetas.add(t);
+        return true;
+    }
 	public String getResultado() {
 		if (marcadorLocal > marcadorVisitante) {
 			return "VICTORIA";
