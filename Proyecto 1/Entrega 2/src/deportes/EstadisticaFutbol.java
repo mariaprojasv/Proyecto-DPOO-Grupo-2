@@ -14,12 +14,12 @@ public class EstadisticaFutbol extends Estadistica {
 	
 
 	public int getGoles() {
-		return goles;
+	return goles;
 	}
 
 
 	public int getAsistencias() {
-		return asistencias;
+	return asistencias;
 	}
 
 
@@ -32,10 +32,10 @@ public class EstadisticaFutbol extends Estadistica {
 
 	@Override
 	public int getValorDestacado() {
-		return this.goles;
+	return this.goles;
 	}
 	@Override
 	public Estadistica crearVacia() {
-		return new EstadisticaFutbol(getJugador(), 0, 0);
+	    return new EstadisticaFutbol(getJugador(), 0, 0);
 	}
 }

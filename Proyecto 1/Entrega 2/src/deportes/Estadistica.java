@@ -6,11 +6,13 @@ public abstract class Estadistica {
 	private Jugador jugador;
 
 	public Estadistica(Jugador jugador) {
-		this.jugador = jugador;
+
+	    this.jugador = jugador;
+
 	}
 
 	public Jugador getJugador() {
-		return jugador;
+	return jugador;
 	}
 
 	public abstract void acumular(Estadistica otra);

@@ -19,18 +19,32 @@ public class AreaDeportiva {
 		this.competencias = new ArrayList<>();
 	}
 
-	public ArrayList<Deporte> getDeportes() { return deportes; }
-	public ArrayList<Categoria> getCategorias() { return categorias; }
-	public ArrayList<Equipo> getEquipos() { return equipos; }
-	public ArrayList<Partido> getPartidos() { return partidos; }
-	public ArrayList<Competencia> getCompetencias() { return competencias; }
+	public ArrayList<Deporte> getDeportes() {
+	return deportes;
+	}
+	public ArrayList<Categoria> getCategorias() {
+	return categorias;
+	}
+	public ArrayList<Equipo> getEquipos() {
+	return equipos;
+	}
+	public ArrayList<Partido> getPartidos() {
+	return partidos;
+	}
+	public ArrayList<Competencia> getCompetencias() {
+	return competencias;
+	}
 
 	public void agregarDeporte(Deporte d) {
-		deportes.add(d);
+
+	    deportes.add(d);
+
 	}
 
 	public void agregarCategoria(Categoria c) {
-		categorias.add(c);
+
+	    categorias.add(c);
+
 	}
 
 	public Equipo crearEquipo(String nombre, Deporte deporte, Categoria categoria, int cupoMaximo) {
@@ -59,7 +73,9 @@ public class AreaDeportiva {
 	}
 
 	public void darDeBajaEquipo(Equipo e) {
-		equipos.remove(e);
+
+	    equipos.remove(e);
+
 	}
 
 	public boolean estaSuspendido(Jugador j, Equipo equipo) {
@@ -97,11 +113,15 @@ public class AreaDeportiva {
 	}
 
 	public void crearCompetencia(Competencia c) {
-		competencias.add(c);
+
+	    competencias.add(c);
+
 	}
 
 	public boolean inscribirEquipoEnCompetencia(Equipo e, Competencia c, ArrayList<Jugador> jugadores) {
-		return c.inscribirEquipo(e, jugadores);
+
+	    return c.inscribirEquipo(e, jugadores);
+
 	}
 
 	public void registrarPartidoCompetencia(Competencia c, PartidoCompetencia p) {

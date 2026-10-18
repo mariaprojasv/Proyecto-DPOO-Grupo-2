@@ -25,32 +25,35 @@ public abstract class Competencia {
 		this.partidos = new ArrayList<>();
 	}
 	public String getNombre() {
-		return nombre;
+	return nombre;
 	}
 	public String getTemporada() {
-		return temporada;
+	return temporada;
 	}
 	public String getOrganizador() {
-		return organizador;
+	return organizador;
 	}
 	public int getNominaMinima() {
-		return nominaMinima;
+	return nominaMinima;
 	}
 	public Deporte getDeporte() {
-		return deporte;
+	return deporte;
 	}
 	public Categoria getCategoria() {
-		return categoria;
+	return categoria;
 	}
 	public ArrayList<Nomina> getNominas() {
-		return nominas;
+	return nominas;
 	}
 	public ArrayList<PartidoCompetencia> getPartidos() {
-		return partidos;
+	return partidos;
 	}
 	
 	public boolean inscribirEquipo(Equipo e, ArrayList<Jugador> jugadores) {
-		if (e.getCategoria() != categoria) {
+		if (e == null || jugadores == null || getEquipos().contains(e)) {
+            return false;
+        }
+        if (e.getCategoria() != categoria) {
 			return false;
 		}
 		if (e.getDeporte() != deporte) {
@@ -59,7 +62,11 @@ public abstract class Competencia {
 		if (jugadores.size() < nominaMinima) {
 			return false;
 		}
-		Nomina n = new Nomina(e);
+		if (new java.util.HashSet<>(jugadores).size() != jugadores.size()
+                || jugadores.contains(null) || !e.getJugadores().containsAll(jugadores)) {
+            return false;
+        }
+        Nomina n = new Nomina(e);
 		for (Jugador j : jugadores) {
 			n.agregarJugador(j);
 		}

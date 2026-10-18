@@ -11,11 +11,11 @@ public class PartidoInterno extends Partido {
 	}
 
 	public Equipo getRival() {
-		return rival;
+	return rival;
 	}
 
 	@Override
 	public boolean puedeJugarse() {
-		return getEquipoClub().tieneMinimoJugadores() && rival.tieneMinimoJugadores();
+	    return getEquipoClub().tieneMinimoJugadores() && rival.tieneMinimoJugadores();
 	}
 }

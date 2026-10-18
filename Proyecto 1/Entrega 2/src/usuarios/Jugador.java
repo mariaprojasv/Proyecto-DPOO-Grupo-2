@@ -15,11 +15,11 @@ public class Jugador extends Socio {
 	}
 
 	public LocalDate getFechaNacimiento() {
-		return fechaNacimiento;
+	return fechaNacimiento;
 	}
 
 	public int getEdad() {
-		return Period.between(fechaNacimiento, LocalDate.now()).getYears();
+	return Period.between(fechaNacimiento, LocalDate.now()).getYears();
 	}
 	public Estadistica getEstadisticasAcumuladas(Competencia c) {
 		Estadistica acumulada = null;

@@ -12,24 +12,32 @@ public class DetalleVenta {
 		this.precioUnitario = articulo.getPrecio();
 	}
 
+	public DetalleVenta(Articulo articulo, int cantidad, double precioUnitario) {
+		this.articulo = articulo;
+		this.cantidad = cantidad;
+		this.precioUnitario = precioUnitario;
+	}
+
 	public Articulo getArticulo() {
-		return articulo;
+	return articulo;
 	}
 
 	public int getCantidad() {
-		return cantidad;
+	return cantidad;
 	}
 
 	public double getPrecioUnitario() {
-		return precioUnitario;
+	return precioUnitario;
 	}
 
 	public double calcularSubtotal() {
-		return cantidad * precioUnitario;
+
+	    return cantidad * precioUnitario;
+
 	}
 
 	@Override
 	public String toString() {
-		return articulo.getNombre() + " x" + cantidad + " = $" + calcularSubtotal();
+	    return articulo.getNombre() + " x" + cantidad + " = $" + calcularSubtotal();
 	}
 }

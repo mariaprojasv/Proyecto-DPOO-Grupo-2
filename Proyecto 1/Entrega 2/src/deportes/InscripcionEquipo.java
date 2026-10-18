@@ -12,13 +12,13 @@ public class InscripcionEquipo {
 		this.numeroCamiseta = numeroCamiseta;
 	}
 	public Jugador getJugador() {
-		return jugador;
+	return jugador;
 	}
 	public String getPosicion() {
-		return posicion;
+	return posicion;
 	}
 	public int getNumeroCamiseta() {
-		return numeroCamiseta;
+	return numeroCamiseta;
 	}
 	
 }

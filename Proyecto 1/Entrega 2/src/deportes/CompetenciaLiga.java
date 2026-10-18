@@ -11,11 +11,14 @@ public class CompetenciaLiga extends Competencia {
 	}
 
 	public ArrayList<PosicionTabla> getTablaPosiciones() {
-		return tabla;
+	return tabla;
 	}
 
 	@Override
 	public void registrarPartido(PartidoCompetencia p) {
+		if (p == null || getPartidos().contains(p)) {
+			return;
+		}
 		getPartidos().add(p);
 		actualizarTabla(p);
 	}

@@ -11,13 +11,17 @@ public class Categoria {
 		this.edadMaxima = edadMaxima;
 	}
 	public String getNombre() {
-		return nombre;
+	return nombre;
 	}
+	public int getEdadMinima() {
+	return edadMinima;
+	}
+
 	public int getEdadMaxima() {
-		return edadMaxima;
+	return edadMaxima;
 	}
 	public boolean edadPermitida(int edad) {
-		return edad >= edadMinima && edad <= edadMaxima;
+	    return edad >= edadMinima && edad <= edadMaxima;
 	}
 	
 

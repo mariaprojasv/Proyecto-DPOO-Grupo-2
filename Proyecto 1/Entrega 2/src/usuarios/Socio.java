@@ -9,7 +9,7 @@ public class Socio extends Usuario {
 	}
 
 	public int getPuntosFidelidad() {
-		return puntosFidelidad;
+	return puntosFidelidad;
 	}
 	
 }

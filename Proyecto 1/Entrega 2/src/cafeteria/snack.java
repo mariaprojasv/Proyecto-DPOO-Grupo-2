@@ -10,11 +10,11 @@ public class snack extends Producto {
 	}
 
 	public String getAlergenos() {
-		return alergenos;
+	return alergenos;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + " | Alergenos: " + alergenos;
+	    return super.toString() + " | Alergenos: " + alergenos;
 	}
 }

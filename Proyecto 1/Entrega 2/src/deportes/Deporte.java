@@ -12,16 +12,16 @@ public class Deporte {
 		this.puntosEmpate = puntosEmpate;
 	}
 	public String getNombre() {
-		return nombre;
+	return nombre;
 	}
 	public int getMinJugadoresPartido() {
-		return minJugadoresPartido;
+	return minJugadoresPartido;
 	}
 	public int getPuntosGanar() {
-		return puntosGanar;
+	return puntosGanar;
 	}
 	public int getPuntosEmpate() {
-		return puntosEmpate;
+	return puntosEmpate;
 	}
 	public int getPuntosPorResultado(String resultado) {
 		if (resultado.equals("VICTORIA")) {

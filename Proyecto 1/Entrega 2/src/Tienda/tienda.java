@@ -72,11 +72,11 @@ public class tienda {
 	}
 
 	public ArrayList<Articulo> getArticulos() {
-		return articulos;
+	return articulos;
 	}
 
 	public ArrayList<Venta> getVentas() {
-		return ventas;
+	return ventas;
 	}
 
 	public void mostrarInventario() {

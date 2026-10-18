@@ -13,6 +13,7 @@ public class Venta {
 
 	private double subtotal;
 	private double descuento;
+	private double porcentajeDescuento;
 	private double impuestos;
 	private double total;
 	private int puntosGenerados;
@@ -24,9 +25,23 @@ public class Venta {
 
 		this.subtotal = 0;
 		this.descuento = 0;
+		this.porcentajeDescuento = 0;
 		this.impuestos = 0;
 		this.total = 0;
 		this.puntosGenerados = 0;
+	}
+
+	public void establecerFecha(LocalDate fecha) {
+		if (fecha != null) {
+			this.fecha = fecha;
+		}
+	}
+
+	public void agregarDetalleGuardado(Articulo articulo, int cantidad, double precioUnitario) {
+		if (articulo != null && cantidad > 0 && precioUnitario >= 0) {
+			detalles.add(new DetalleVenta(articulo, cantidad, precioUnitario));
+			calcularSubtotal();
+		}
 	}
 
 	public void agregarDetalle(Articulo articulo, int cantidad) {
@@ -66,54 +81,54 @@ public class Venta {
 			porcentaje = 100;
 		}
 
-		descuento = subtotal * porcentaje / 100.0;
+		porcentajeDescuento = porcentaje;
+		descuento = subtotal * porcentajeDescuento / 100.0;
 	}
 
 	public void calcularTotal() {
 
 		calcularSubtotal();
+		descuento = subtotal * porcentajeDescuento / 100.0;
 
 		double valorConDescuento = subtotal - descuento;
 
-		// IVA de la tienda: 19%
 		impuestos = valorConDescuento * 0.19;
 
 		total = valorConDescuento + impuestos;
 
-		// 2% del valor de la venta convertido en puntos
 		puntosGenerados = (int) (total * 0.02);
 	}
 
 	public LocalDate getFecha() {
-		return fecha;
+	return fecha;
 	}
 
 	public Usuario getComprador() {
-		return comprador;
+	return comprador;
 	}
 
 	public ArrayList<DetalleVenta> getDetalles() {
-		return detalles;
+	return detalles;
 	}
 
 	public double getSubtotal() {
-		return subtotal;
+	return subtotal;
 	}
 
 	public double getDescuento() {
-		return descuento;
+	return descuento;
 	}
 
 	public double getImpuestos() {
-		return impuestos;
+	return impuestos;
 	}
 
 	public double getTotal() {
-		return total;
+	return total;
 	}
 
 	public int getPuntosGenerados() {
-		return puntosGenerados;
+	return puntosGenerados;
 	}
 
 	@Override

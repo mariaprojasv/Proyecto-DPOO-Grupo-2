@@ -14,12 +14,12 @@ public class EstadisticaVoleibol extends Estadistica {
 	
 
 	public int getAces() {
-		return aces;
+	return aces;
 	}
 
 
 	public int getBloqueos() {
-		return bloqueos;
+	return bloqueos;
 	}
 
 
@@ -33,10 +33,10 @@ public class EstadisticaVoleibol extends Estadistica {
 
 	@Override
 	public int getValorDestacado() {
-		return this.aces;
+	return this.aces;
 	}
 	@Override
 	public Estadistica crearVacia() {
-		return new EstadisticaFutbol(getJugador(), 0, 0);
+	    return new EstadisticaVoleibol(getJugador(), 0, 0);
 	}
 }

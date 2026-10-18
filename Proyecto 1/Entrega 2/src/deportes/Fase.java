@@ -14,18 +14,22 @@ public class Fase {
 	}
 
 	public String getNombre() {
-		return nombre;
+	return nombre;
 	}
 
 	public boolean isEsEliminacion() {
-		return esEliminacion;
+
+	    return esEliminacion;
+
 	}
 
 	public ArrayList<Grupo> getGrupos() {
-		return grupos;
+	return grupos;
 	}
 
 	public void agregarGrupo(Grupo g) {
-		grupos.add(g);
+
+	    grupos.add(g);
+
 	}
 }

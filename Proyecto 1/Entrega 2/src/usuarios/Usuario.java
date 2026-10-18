@@ -10,15 +10,15 @@ public abstract class Usuario {
 		this.nombre = nombre;
 	}
 	public String getLogin() {
-		return login;
+	return login;
 	}
 	public String getPassword() {
-		return password;
+	return password;
 	}
 	public String getNombre() {
-		return nombre;
+	return nombre;
 	}
 	public boolean autenticar(String password) {
-		return this.password.equals(password);
+	    return this.password.equals(password);
 	}
 }

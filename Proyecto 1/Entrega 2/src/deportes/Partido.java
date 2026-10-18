@@ -23,44 +23,47 @@ public abstract class Partido {
 	}
 
 	public LocalDate getFecha() {
-		return fecha;
+	return fecha;
 	}
 
 	public Deporte getDeporte() {
-		return deporte;
+	return deporte;
 	}
 
 	public Equipo getEquipoClub() {
-		return equipoClub;
+	return equipoClub;
 	}
 
 	public int getMarcadorLocal() {
-		return marcadorLocal;
+	return marcadorLocal;
 	}
 
 	public int getMarcadorVisitante() {
-		return marcadorVisitante;
+	return marcadorVisitante;
 	}
 
 	public ArrayList<Estadistica> getEstadisticas() {
-		return estadisticas;
+	return estadisticas;
 	}
 
 	public ArrayList<Tarjeta> getTarjetas() {
-		return tarjetas;
+	return tarjetas;
 	}
 	public abstract boolean puedeJugarse();
 	
 	public void registrarMarcador(int local, int visitante) {
+		if (local < 0 || visitante < 0) {
+			return;
+		}
 		this.marcadorLocal = local;
-		this.marcadorVisitante =visitante;
+		this.marcadorVisitante = visitante;
 		
 	}
 	public void registrarEstadistica(Estadistica e) {
-		estadisticas.add(e);
+	    estadisticas.add(e);
 	}
 	public void registrarTarjeta(Tarjeta t) {
-		tarjetas.add(t);
+	    tarjetas.add(t);
 	}
 	public String getResultado() {
 		if (marcadorLocal > marcadorVisitante) {

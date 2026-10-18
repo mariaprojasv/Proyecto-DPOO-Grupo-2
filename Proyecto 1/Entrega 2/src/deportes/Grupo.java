@@ -12,14 +12,16 @@ public class Grupo {
 	}
 
 	public String getNombre() {
-		return nombre;
+	return nombre;
 	}
 
 	public ArrayList<Equipo> getEquipos() {
-		return equipos;
+	return equipos;
 	}
 
 	public void agregarEquipo(Equipo e) {
-		equipos.add(e);
+
+	    equipos.add(e);
+
 	}
 }

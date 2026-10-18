@@ -10,7 +10,9 @@ public class bebida extends Producto{
 	}
 
 	public boolean esCaliente() {
-		return caliente;
+
+	    return caliente;
+
 	}
 
 	@Override

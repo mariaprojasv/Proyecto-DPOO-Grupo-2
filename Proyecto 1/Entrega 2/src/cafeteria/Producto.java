@@ -13,15 +13,15 @@ public abstract class Producto {
 	}
 
 	public String getNombre() {
-		return nombre;
+	return nombre;
 	}
 
 	public double getPrecio() {
-		return precio;
+	return precio;
 	}
 
 	public int getCantidad() {
-		return cantidad;
+	return cantidad;
 	}
 
 	public void aumentarCantidad(int cantidad) {
@@ -43,6 +43,6 @@ public abstract class Producto {
 
 	@Override
 	public String toString() {
-		return nombre + " | $" + precio + " | Cantidad: " + cantidad;
+	    return nombre + " | $" + precio + " | Cantidad: " + cantidad;
 	}
 }

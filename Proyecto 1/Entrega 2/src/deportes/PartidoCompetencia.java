@@ -13,15 +13,15 @@ public class PartidoCompetencia extends Partido {
 	}
 
 	public String getInstitucionRival() {
-		return institucionRival;
+	return institucionRival;
 	}
 
 	public String getEscenario() {
-		return escenario;
+	return escenario;
 	}
 
 	@Override
 	public boolean puedeJugarse() {
-		return getEquipoClub().tieneMinimoJugadores();
+	    return getEquipoClub().tieneMinimoJugadores();
 	}
 }

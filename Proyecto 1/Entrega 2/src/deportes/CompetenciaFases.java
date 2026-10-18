@@ -13,23 +13,29 @@ public class CompetenciaFases extends Competencia {
 	}
 
 	public ArrayList<Fase> getFases() {
-		return fases;
+	return fases;
 	}
 
 	public int getFaseActual() {
-		return faseActual;
+	return faseActual;
 	}
 
 	public void agregarFase(Fase f) {
-		fases.add(f);
+
+	    fases.add(f);
+
 	}
 
 	public void avanzarFase() {
-		faseActual += 1;
+
+	    faseActual += 1;
+
 	}
 
 	@Override
 	public void registrarPartido(PartidoCompetencia p) {
-		getPartidos().add(p);
+	    if (p != null && !getPartidos().contains(p)) {
+			getPartidos().add(p);
+		}
 	}
 }

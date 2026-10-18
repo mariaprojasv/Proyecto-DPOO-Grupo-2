@@ -14,12 +14,12 @@ public class EstadisticaBaloncesto extends Estadistica {
 	
 
 	public int getPuntos() {
-		return puntos;
+	return puntos;
 	}
 
 
 	public int getRebotes() {
-		return rebotes;
+	return rebotes;
 	}
 
 
@@ -33,11 +33,11 @@ public class EstadisticaBaloncesto extends Estadistica {
 
 	@Override
 	public int getValorDestacado() {
-		return this.puntos;
+	return this.puntos;
 	}
 	@Override
 	public Estadistica crearVacia() {
-		return new EstadisticaFutbol(getJugador(), 0, 0);
+	    return new EstadisticaBaloncesto(getJugador(), 0, 0);
 	}
 	
 

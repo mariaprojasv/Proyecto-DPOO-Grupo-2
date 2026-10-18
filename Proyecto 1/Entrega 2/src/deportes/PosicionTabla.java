@@ -16,22 +16,22 @@ public class PosicionTabla {
 		this.perdidos = 0;
 	}
 	public Equipo getEquipo() {
-		return equipo;
+	return equipo;
 	}
 	public int getPuntos() {
-		return puntos;
+	return puntos;
 	}
 	public int getPartidosJugados() {
-		return partidosJugados;
+	return partidosJugados;
 	}
 	public int getGanados() {
-		return ganados;
+	return ganados;
 	}
 	public int getEmpatados() {
-		return empatados;
+	return empatados;
 	}
 	public int getPerdidos() {
-		return perdidos;
+	return perdidos;
 	}
 	public void registrarResultado(String resultado, int puntos) {
 		this.partidosJugados += 1;

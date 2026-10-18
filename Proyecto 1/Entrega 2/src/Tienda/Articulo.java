@@ -15,19 +15,19 @@ public class Articulo {
 	}
 
 	public String getNombre() {
-		return nombre;
+	return nombre;
 	}
 
 	public String getCategoria() {
-		return categoria;
+	return categoria;
 	}
 
 	public double getPrecio() {
-		return precio;
+	return precio;
 	}
 
 	public int getCantidad() {
-		return cantidad;
+	return cantidad;
 	}
 
 	public void aumentarCantidad(int cantidad) {
@@ -47,6 +47,6 @@ public class Articulo {
 
 	@Override
 	public String toString() {
-		return nombre + " | " + categoria + " | $" + precio + " | Stock: " + cantidad;
+	    return nombre + " | " + categoria + " | $" + precio + " | Stock: " + cantidad;
 	}
 }

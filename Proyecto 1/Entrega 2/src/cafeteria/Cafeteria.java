@@ -7,7 +7,9 @@ public class Cafeteria {
 	private ArrayList<Producto> productos;
 
 	public Cafeteria() {
-		productos = new ArrayList<>();
+
+	    productos = new ArrayList<>();
+
 	}
 
 	public void agregarProducto(Producto producto) {
@@ -50,7 +52,7 @@ public class Cafeteria {
 	}
 
 	public ArrayList<Producto> getProductos() {
-		return productos;
+	return productos;
 	}
 
 	public void mostrarMenu() {

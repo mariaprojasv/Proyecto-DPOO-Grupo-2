@@ -10,10 +10,10 @@ public class Tarjeta {
 		this.tipo = tipo;
 	}
 	public Jugador getJugador() {
-		return jugador;
+	return jugador;
 	}
 	public String getTipo() {
-		return tipo;
+	return tipo;
 	}
 	
 }

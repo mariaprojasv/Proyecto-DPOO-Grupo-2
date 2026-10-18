@@ -19,7 +19,6 @@ public class PruebaDeportes {
 	public static void main(String[] args) {
 		AreaDeportiva area = new AreaDeportiva();
 
-		// 1. crear deportes y categorias
 		Deporte futbol = new Deporte("Futbol", 7, 3, 1);
 		Deporte baloncesto = new Deporte("Baloncesto", 5, 2, 0);
 		area.agregarDeporte(futbol);
@@ -30,13 +29,11 @@ public class PruebaDeportes {
 		area.agregarCategoria(sub17);
 		System.out.println("Deportes: " + area.getDeportes().size() + ", categorias: " + area.getCategorias().size());
 
-		// 2. crear equipos
 		Equipo leones = area.crearEquipo("Leones", futbol, mayores, 18);
 		Equipo tigres = area.crearEquipo("Tigres", futbol, mayores, 18);
 		Equipo aguilas = area.crearEquipo("Aguilas", baloncesto, mayores, 12);
 		System.out.println("Equipos creados: " + area.getEquipos().size());
 
-		// 3. crear jugadores e inscripciones
 		ArrayList<Jugador> jugadores = new ArrayList<>();
 		for (int i = 1; i <= 8; i++) {
 			Jugador j = new Jugador("jug" + i, "1234", "Jugador " + i, 0, LocalDate.of(2000, 1, i));
@@ -45,7 +42,6 @@ public class PruebaDeportes {
 			System.out.println("Inscribir " + j.getNombre() + " en Leones con #" + i + ": " + ok);
 		}
 
-		// inscripciones que deben fallar
 		Jugador extra = new Jugador("extra", "1234", "Extra", 0, LocalDate.of(2001, 5, 5));
 		boolean r1 = area.inscribirJugadorEnEquipo(extra, leones, "portero", 3);
 		System.out.println("Numero repetido (#3): " + r1);
@@ -57,7 +53,6 @@ public class PruebaDeportes {
 		boolean r4 = area.inscribirJugadorEnEquipo(menor, leones, "defensa", 40);
 		System.out.println("Menor de edad en Mayores: " + r4);
 
-		// 4. Crear Partido Interno
 		System.out.println("Leones tiene minimo? " + leones.tieneMinimoJugadores());
 		System.out.println("Tigres tiene minimo? " + tigres.tieneMinimoJugadores());
 		PartidoInterno rechazado = area.programarPartidoInterno(LocalDate.now(), leones, tigres);
@@ -84,7 +79,6 @@ public class PruebaDeportes {
 		System.out.println("Jugador 2 suspendido para el proximo partido? " + area.estaSuspendido(jugadores.get(1), leones));
 		System.out.println("Jugador 1 suspendido? " + area.estaSuspendido(jugadores.get(0), leones));
 
-		// 5. Crear competencia liga
 		CompetenciaLiga cerros = new CompetenciaLiga("Torneo de los Cerros", "Universidades", "2026-2", 7, futbol, mayores);
 		area.crearCompetencia(cerros);
 		boolean insc1 = area.inscribirEquipoEnCompetencia(leones, cerros, jugadores);

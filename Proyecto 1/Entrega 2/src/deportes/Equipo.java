@@ -17,19 +17,19 @@ public class Equipo {
 		this.inscripciones = new ArrayList<>();
 	}
 	public String getNombre() {
-		return nombre;
+	return nombre;
 	}
 	public int getCupoMaximo() {
-		return cupoMaximo;
+	return cupoMaximo;
 	}
 	public Deporte getDeporte() {
-		return deporte;
+	return deporte;
 	}
 	public Categoria getCategoria() {
-		return categoria;
+	return categoria;
 	}
 	public ArrayList<InscripcionEquipo> getInscripciones() {
-		return inscripciones;
+	return inscripciones;
 	}
 	
 	public boolean numeroDisponible(int numero) {
@@ -62,6 +62,10 @@ public class Equipo {
 	    }
 	}
 	public boolean agregarJugador(Jugador j, String posicion, int numero) {
+
+	    if (j == null || getJugadores().contains(j) || numero <= 0) {
+            return false;
+        }
 
 	    if (inscripciones.size() >= cupoMaximo) {
 	        return false;

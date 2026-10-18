@@ -13,18 +13,22 @@ public class Nomina {
 	}
 
 	public Equipo getEquipo() {
-		return equipo;
+	return equipo;
 	}
 
 	public ArrayList<Jugador> getJugadores() {
-		return jugadores;
+	return jugadores;
 	}
 
 	public void agregarJugador(Jugador j) {
-		jugadores.add(j);
+
+	    jugadores.add(j);
+
 	}
 
 	public boolean estaHabilitado(Jugador j) {
-		return jugadores.contains(j);
+
+	    return jugadores.contains(j);
+
 	}
 }
