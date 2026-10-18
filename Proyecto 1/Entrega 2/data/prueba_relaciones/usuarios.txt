@@ -1,0 +1,2 @@
+J|jug1|1234|Jugador Uno|0|2000-01-01
+E|ent1|1234|Entrenador Uno|Futbol

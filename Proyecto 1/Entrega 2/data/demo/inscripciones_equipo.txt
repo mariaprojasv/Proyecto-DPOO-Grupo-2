@@ -1,0 +1,8 @@
+0|jug1|Delantero|1
+0|jug2|Delantero|2
+0|jug3|Delantero|3
+0|jug4|Delantero|4
+0|jug5|Delantero|5
+0|jug6|Delantero|6
+0|jug7|Delantero|7
+0|jug8|Delantero|8

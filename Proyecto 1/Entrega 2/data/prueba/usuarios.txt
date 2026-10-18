@@ -1,0 +1,2 @@
+S|ana|1234|Ana|10
+J|juan|abcd|Juan|20|2002-05-12

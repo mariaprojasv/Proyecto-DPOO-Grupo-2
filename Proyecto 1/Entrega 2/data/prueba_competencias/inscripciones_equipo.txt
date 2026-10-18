@@ -1,0 +1,7 @@
+0|jug1|Jugador|1
+0|jug2|Jugador|2
+0|jug3|Jugador|3
+0|jug4|Jugador|4
+0|jug5|Jugador|5
+0|jug6|Jugador|6
+0|jug7|Jugador|7

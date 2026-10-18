@@ -1,0 +1,1 @@
+S|cliente1|1234|Cliente|0
