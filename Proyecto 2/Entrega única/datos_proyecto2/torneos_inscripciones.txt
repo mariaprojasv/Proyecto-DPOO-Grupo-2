@@ -1,0 +1,4 @@
+0|REGULAR|0.0|I:socio1
+0|REGULAR|0.0|I:fisioterapeuta1
+1|REGULAR|0.0|P:socio1;socio2
+2|REGULAR|0.0|Q:0

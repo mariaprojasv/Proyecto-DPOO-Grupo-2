@@ -1,0 +1,2 @@
+Cancha Tenis Prueba|0|2|Individual|false
+Cancha Padel Prueba|1|4|Dobles|false

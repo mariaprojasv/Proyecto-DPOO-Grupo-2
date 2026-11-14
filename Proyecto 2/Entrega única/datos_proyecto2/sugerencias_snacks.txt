@@ -1,0 +1,5 @@
+entrenador1|Barra de cereal|3500.0|10|Gluten|APROBADA|
+entrenador1|Galletas de prueba|2500.0|5|Trigo|RECHAZADA|Producto no autorizado
+entrenador1|Snack Prueba Sin Alergenos|2500.0|5|Maní|APROBADA|
+fisioterapeuta1|Snack Fisio Prueba|3000.0|15|Ninguno|PENDIENTE|
+fisioterapeuta1|Avena|2000.0|11|Lácteos|APROBADA|

@@ -1,0 +1,5 @@
+A|admin|admin123|administrador
+S|socio1|socio123|Socio Prueba|0
+S|socio2|socio123|Socio Dos|0
+E|entrenador1|entrena123|Entrenador Prueba|Tenis
+F|fisioterapeuta1|fisio123|Fisioterapeuta Prueba

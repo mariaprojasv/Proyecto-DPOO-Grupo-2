@@ -1,0 +1,3 @@
+S|Barra de cereal|3500.0|10|Gluten
+S|Snack Prueba Sin Alergenos|2500.0|5|Maní
+S|Avena|2000.0|10|Lácteos
